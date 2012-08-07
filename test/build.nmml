@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+
+    <app title="nano test" main="NanoTest" file="utils" package="me.silvertoad.nano.haxe" version="1.0.0" company="CrabsCrew"/>
+
+    <window width="640" height="480" fps="30" orientation="portrait" resizable="true"/>
+
+    <set name="BUILD_DIR" value="../out/production/nano_test"/>
+    <classpath name="src"/>
+    <classpath name="../src"/>
+
+    <haxelib name="nme"/>
+
+    <ndll name="std"/>
+    <ndll name="regexp"/>
+    <ndll name="zlib"/>
+    <ndll name="nme" haxelib="nme"/>
+</project>

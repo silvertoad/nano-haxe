@@ -1,0 +1,20 @@
+<project name="compile test" basedir="./">
+    <target name="compile_neko_vm">
+        <exec executable="nme">
+            <arg value="-debug"/>
+            <arg value="test"/>
+            <arg value="build.nmml"/>
+            <arg value="neko"/>
+        </exec>
+    </target>
+
+    <target name="compile_flash">
+        <exec executable="nme">
+            <arg value="-debug"/>
+            <arg value="test"/>
+            <arg value="build.nmml"/>
+            <arg value="flash"/>
+        </exec>
+    </target>
+
+</project>
