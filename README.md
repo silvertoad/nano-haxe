@@ -1,4 +1,4 @@
 nano-haxe
 =========
 
-Hardcore port of Nano gui framework
+Hardcore port of "nano" gui framework
