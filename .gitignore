@@ -3,3 +3,5 @@ out
 
 # Project property files
 *.iml
+*.ipr
+*.iws
