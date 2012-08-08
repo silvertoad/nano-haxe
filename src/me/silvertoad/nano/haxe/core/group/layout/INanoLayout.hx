@@ -1,11 +1,13 @@
 package me.silvertoad.nano.haxe.core.group.layout;
+import me.silvertoad.nano.haxe.core.group.layout.align.NanoHorizontalAlign;
+import me.silvertoad.nano.haxe.core.group.layout.align.NanoVerticalAlign;
 import me.silvertoad.nano.haxe.core.group.NanoGroup;
 
 interface INanoLayout {
 /**
 * Группа над которой будет работать INanoLayout
 */
-    var container(_getContainer, _setContainer):NanoGroup;
+    var container(default, default):NanoGroup;
 
 /**
 * Расстояние между элеентами
@@ -36,15 +38,15 @@ interface INanoLayout {
 /**
 * Вертикальное выраснивание элементов группы
 */
-    var verticalAlign(default, default):String;
+    var verticalAlign(default, default):NanoVerticalAlign;
 
 /**
 * Горизонтальное выравнивание элементов группы
 */
-    var horizontalAlign(default, default):String;
+    var horizontalAlign(default, default):NanoHorizontalAlign;
 
 /**
 * Выравныть элементы группы
 */
-    function realign();
+    function realign():Void;
 }

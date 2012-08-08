@@ -1,4 +1,7 @@
 package me.silvertoad.nano.haxe.core.group.layout;
+import me.silvertoad.nano.haxe.core.group.INanoGroup;
+import me.silvertoad.nano.haxe.core.group.layout.align.NanoVerticalAlign;
+import me.silvertoad.nano.haxe.core.group.layout.align.NanoHorizontalAlign;
 import nme.display.DisplayObject;
 import me.silvertoad.nano.haxe.core.group.NanoGroup;
 class NanoBaseLayout implements INanoLayout {
@@ -8,6 +11,8 @@ class NanoBaseLayout implements INanoLayout {
         this.paddingRight = paddingRight;
         this.paddingTop = paddingTop;
         this.paddingBottom = paddingBottom;
+        this.verticalAlign = NanoVerticalAlign.MIDDLE;
+        this.horizontalAlign = NanoHorizontalAlign.CENTER;
     }
 
     public var container(default, default):NanoGroup;
@@ -16,8 +21,8 @@ class NanoBaseLayout implements INanoLayout {
     public var paddingRight(default, default):Float;
     public var paddingTop(default, default):Float;
     public var paddingBottom(default, default):Float;
-    public var verticalAlign(default, default):String;
-    public var horizontalAlign(default, default):String;
+    public var verticalAlign(default, default):NanoVerticalAlign;
+    public var horizontalAlign(default, default):NanoHorizontalAlign;
 
     public function realign() {
         alignVertical();
@@ -33,63 +38,61 @@ class NanoBaseLayout implements INanoLayout {
 
         for (i in 0...container.numChildren) {
             var element:DisplayObject = container.getChildAt(i);
-            switch (_verticalAlign) {
+            switch (verticalAlign) {
                 case NanoVerticalAlign.TOP:
                     element.y = paddingTop;
                     break;
                 case NanoVerticalAlign.MIDDLE:
-                    if (container.fixedHeight) {
-//TODO: подумать, может быть сдесь стоит прибавить paddingTop и отнять paddingBottom
-                        element.y = (container.fixedHeight - element.height + paddingTop - paddingBottom) / 2;
+                    if (container.fixedHeight != null) {
+                        element.y = (container.fixedHeight - getHeight(element) + paddingTop - paddingBottom) / 2;
                     } else {
-                        element.y = paddingTop + (maxHeight - element.height) / 2;
+                        element.y = paddingTop + (maxHeight - getHeight(element)) / 2;
                     }
                     break;
                 case NanoVerticalAlign.BOTTOM:
-                    if (container.fixedHeight) {
-                        element.y = container.fixedHeight - element.height - paddingBottom;
+                    if (container.fixedHeight != null) {
+                        element.y = container.fixedHeight - getHeight(element) - paddingBottom;
                     } else {
-                        element.y = paddingTop + (maxHeight - element.height);
+                        element.y = paddingTop + (maxHeight - getHeight(element));
                     }
                     break;
             }
         }
 
-        container.measureHeight = paddingTop + maxHeight + paddingBottom;
+        container.setMeasureHeight(paddingTop + maxHeight + paddingBottom);
     }
 
 /**
 * Произвести выравнивание по горизонтали
 */
 
-    private function alignHorizontal():void {
+    private function alignHorizontal() {
         var maxWidth:Float = getMaxElementSide(true);
 
         for (i in 0...container.numChildren) {
             var element:DisplayObject = container.getChildAt(i);
-            switch (_horizontalAlign) {
+            switch (horizontalAlign) {
                 case NanoHorizontalAlign.LEFT:
                     element.x = paddingLeft;
                     break;
                 case NanoHorizontalAlign.CENTER:
-//TODO: подумать, может быть сдесь стоит прибавить paddingLeft и отнять paddingRight
-                    if (container.fixedWidth) {
-                        element.x = (container.fixedWidth - element.width + paddingLeft - paddingRight) / 2;
+                    if (container.fixedWidth != null) {
+                        element.x = (container.fixedWidth - getWidth(element) + paddingLeft - paddingRight) / 2;
                     } else {
-                        element.x = paddingLeft + (maxWidth - element.width) / 2;
+                        element.x = paddingLeft + (maxWidth - getWidth(element)) / 2;
                     }
                     break;
                 case NanoHorizontalAlign.RIGHT:
-                    if (container.fixedWidth) {
-                        element.x = container.fixedWidth - element.width - paddingRight;
+                    if (container.fixedWidth != null) {
+                        element.x = container.fixedWidth - getWidth(element) - paddingRight;
                     } else {
-                        element.x = paddingLeft + (maxWidth - element.width);
+                        element.x = paddingLeft + (maxWidth - getWidth(element));
                     }
                     break;
             }
         }
 
-        container.measureWidth = paddingLeft + maxWidth + paddingRight;
+        container.setMeasureWidth(paddingLeft + maxWidth + paddingRight);
     }
 
 /**
@@ -102,9 +105,23 @@ class NanoBaseLayout implements INanoLayout {
         var maxSide:Float = 0;
         for (i in 0...container.numChildren) {
             var element:DisplayObject = container.getChildAt(i);
-            var tmpSide:Float = byWidth ? element.width : element.height;
+            var tmpSide:Float = byWidth ? getWidth(element) : getHeight(element);
             maxSide = tmpSide > maxSide ? tmpSide : maxSide;
         }
         return maxSide;
+    }
+
+    private function getWidth(element:DisplayObject):Float {
+        if (Std.is(element, INanoGroup)) {
+            return cast(element, INanoGroup).nWidth;
+        }
+        return element.width;
+    }
+
+    private function getHeight(element:DisplayObject):Float {
+        if (Std.is(element, INanoGroup)) {
+            return cast(element, INanoGroup).nHeight;
+        }
+        return element.height;
     }
 }
