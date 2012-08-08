@@ -69,8 +69,11 @@ class NanoBaseLayout implements INanoLayout {
     private function alignHorizontal() {
         var maxWidth:Float = getMaxElementSide(true);
 
-        for (i in 0...container.numChildren) {
+        trace(container.numChildren);
+        for (i in 0...container.numChildren+1) {
             var element:DisplayObject = container.getChildAt(i);
+            trace(i + " element");
+            trace(horizontalAlign);
             switch (horizontalAlign) {
                 case NanoHorizontalAlign.LEFT:
                     element.x = paddingLeft;
