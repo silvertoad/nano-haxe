@@ -6,11 +6,11 @@ import nme.display.DisplayObject;
 import me.silvertoad.nano.haxe.core.group.NanoGroup;
 class NanoBaseLayout implements INanoLayout {
 
-    public function new(paddingLeft:Float = 0, paddingRight:Float = 0, paddingTop:Float = 0, paddingBottom:Float = 0) {
-        this.paddingLeft = paddingLeft;
-        this.paddingRight = paddingRight;
-        this.paddingTop = paddingTop;
-        this.paddingBottom = paddingBottom;
+    public function new() {
+        this.paddingLeft = 0;
+        this.paddingRight = 0;
+        this.paddingTop = 0;
+        this.paddingBottom = 0;
         this.verticalAlign = NanoVerticalAlign.MIDDLE;
         this.horizontalAlign = NanoHorizontalAlign.CENTER;
     }
@@ -24,14 +24,17 @@ class NanoBaseLayout implements INanoLayout {
     public var verticalAlign(default, default):NanoVerticalAlign;
     public var horizontalAlign(default, default):NanoHorizontalAlign;
 
+    /**
+    * Переформатировать
+    */
     public function realign() {
         alignVertical();
         alignHorizontal();
     }
 
-/**
-* Произвести выравнивание по вертикали
-*/
+    /**
+    * Произвести выравнивание по вертикали
+    */
 
     private function alignVertical() {
         var maxHeight:Float = getMaxElementSide(false);
@@ -61,9 +64,9 @@ class NanoBaseLayout implements INanoLayout {
         container.setMeasureHeight(paddingTop + maxHeight + paddingBottom);
     }
 
-/**
-* Произвести выравнивание по горизонтали
-*/
+    /**
+    * Произвести выравнивание по горизонтали
+    */
 
     private function alignHorizontal() {
         var maxWidth:Float = getMaxElementSide(true);
@@ -93,11 +96,11 @@ class NanoBaseLayout implements INanoLayout {
         container.setMeasureWidth(paddingLeft + maxWidth + paddingRight);
     }
 
-/**
-* Найти наибольшую сторону среди элементов группы
-* @param byWidth если, true ищет по ширине, false - по высоте
-* @return наибольшая сторона
-*/
+    /**
+    * Найти наибольшую сторону среди элементов группы
+    * @param byWidth если, true ищет по ширине, false - по высоте
+    * @return наибольшая сторона
+    */
 
     private function getMaxElementSide(byWidth:Bool = true):Float {
         var maxSide:Float = 0;
