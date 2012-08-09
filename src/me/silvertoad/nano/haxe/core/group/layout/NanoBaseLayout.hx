@@ -43,14 +43,14 @@ class NanoBaseLayout implements INanoLayout {
                     element.y = paddingTop;
                     break;
                 case NanoVerticalAlign.MIDDLE:
-                    if (container.fixedHeight != null) {
+                    if (container.fixedHeight != 0) {
                         element.y = (container.fixedHeight - getHeight(element) + paddingTop - paddingBottom) / 2;
                     } else {
                         element.y = paddingTop + (maxHeight - getHeight(element)) / 2;
                     }
                     break;
                 case NanoVerticalAlign.BOTTOM:
-                    if (container.fixedHeight != null) {
+                    if (container.fixedHeight != 0) {
                         element.y = container.fixedHeight - getHeight(element) - paddingBottom;
                     } else {
                         element.y = paddingTop + (maxHeight - getHeight(element));
@@ -79,14 +79,14 @@ class NanoBaseLayout implements INanoLayout {
                     element.x = paddingLeft;
                     break;
                 case NanoHorizontalAlign.CENTER:
-                    if (container.fixedWidth != null) {
+                    if (container.fixedWidth != 0) {
                         element.x = (container.fixedWidth - getWidth(element) + paddingLeft - paddingRight) / 2;
                     } else {
                         element.x = paddingLeft + (maxWidth - getWidth(element)) / 2;
                     }
                     break;
                 case NanoHorizontalAlign.RIGHT:
-                    if (container.fixedWidth != null) {
+                    if (container.fixedWidth != 0) {
                         element.x = container.fixedWidth - getWidth(element) - paddingRight;
                     } else {
                         element.x = paddingLeft + (maxWidth - getWidth(element));

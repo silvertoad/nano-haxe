@@ -34,7 +34,7 @@ class NanoGroup extends Sprite, implements INanoGroup {
     public var nWidth(_getWidth, _setWidth):Float;
 
     private function _getWidth():Float {
-        return fixedWidth != null ? fixedWidth : (_measureWidth != null ? _measureWidth : width);
+        return fixedWidth != 0 ? fixedWidth : (_measureWidth != 0 ? _measureWidth : width);
     }
 
     private function _setWidth(width:Float):Float {
@@ -44,7 +44,7 @@ class NanoGroup extends Sprite, implements INanoGroup {
     public var nHeight(_getHeight, _setHeight):Float;
 
     private function _getHeight():Float {
-        return fixedHeight != null ? fixedHeight : (_measureHeight != null ? _measureHeight : height);
+        return fixedHeight != 0 ? fixedHeight : (_measureHeight != 0 ? _measureHeight : height);
     }
 
     private function _setHeight(height:Float):Float {

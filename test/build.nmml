@@ -11,6 +11,11 @@
 
     <haxelib name="nme"/>
 
+    <section if="flash">
+        <set name="SWF_VERSION" value="10.1" />
+        <haxedef name="fdb"/>
+    </section>
+
     <assets path="assets" include="*"/>
 
     <ndll name="std"/>

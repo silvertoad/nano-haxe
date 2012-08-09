@@ -1,4 +1,5 @@
 package ;
+import nme.events.MouseEvent;
 import flash.display.DisplayObject;
 import nme.Assets;
 import nme.display.Bitmap;
@@ -13,6 +14,7 @@ class NanoTest extends Sprite {
     private var icon:Bitmap;
 
     public function new() {
+        // http://devnet.jetbrains.net/message/5462981#5462981
         super();
         icon = new Bitmap(Assets.getBitmapData("assets/1.png"));
         var group:NanoGroup = new NanoGroup();
@@ -21,6 +23,11 @@ class NanoTest extends Sprite {
         group.suHeight(200);
         group.build();
         this.addChild(group);
+        this.addEventListener(MouseEvent.CLICK, onMouseClick);
+    }
+
+    private function onMouseClick(event:MouseEvent):Void {
+        trace("click thrue the space");
     }
 
     private function getIcon():Bitmap {

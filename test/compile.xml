@@ -11,7 +11,7 @@
     <target name="compile_flash">
         <exec executable="nme">
             <arg value="-debug"/>
-            <arg value="test"/>
+            <arg value="update"/>
             <arg value="build.nmml"/>
             <arg value="flash"/>
         </exec>
