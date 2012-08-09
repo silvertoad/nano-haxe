@@ -1,0 +1,10 @@
+<project name="compile flash" basedir="./">
+    <target name="compile_flash">
+        <exec executable="nme">
+            <arg value="build"/>
+            <arg value="build.nmml"/>
+            <arg value="flash"/>
+            <arg value="-debug"/>
+        </exec>
+    </target>
+</project>

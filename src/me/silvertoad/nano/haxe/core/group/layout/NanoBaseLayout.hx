@@ -41,21 +41,20 @@ class NanoBaseLayout implements INanoLayout {
             switch (verticalAlign) {
                 case NanoVerticalAlign.TOP:
                     element.y = paddingTop;
-                    break;
                 case NanoVerticalAlign.MIDDLE:
+                    var _y:Float;
                     if (container.fixedHeight != 0) {
-                        element.y = (container.fixedHeight - getHeight(element) + paddingTop - paddingBottom) / 2;
+                        _y = (container.fixedHeight - getHeight(element) + paddingTop - paddingBottom) / 2;
+                        element.y = _y;
                     } else {
                         element.y = paddingTop + (maxHeight - getHeight(element)) / 2;
                     }
-                    break;
                 case NanoVerticalAlign.BOTTOM:
                     if (container.fixedHeight != 0) {
                         element.y = container.fixedHeight - getHeight(element) - paddingBottom;
                     } else {
                         element.y = paddingTop + (maxHeight - getHeight(element));
                     }
-                    break;
             }
         }
 
@@ -69,29 +68,25 @@ class NanoBaseLayout implements INanoLayout {
     private function alignHorizontal() {
         var maxWidth:Float = getMaxElementSide(true);
 
-        trace(container.numChildren);
-        for (i in 0...container.numChildren+1) {
+        for (i in 0...container.numChildren) {
             var element:DisplayObject = container.getChildAt(i);
             trace(i + " element");
             trace(horizontalAlign);
             switch (horizontalAlign) {
                 case NanoHorizontalAlign.LEFT:
                     element.x = paddingLeft;
-                    break;
                 case NanoHorizontalAlign.CENTER:
                     if (container.fixedWidth != 0) {
                         element.x = (container.fixedWidth - getWidth(element) + paddingLeft - paddingRight) / 2;
                     } else {
                         element.x = paddingLeft + (maxWidth - getWidth(element)) / 2;
                     }
-                    break;
                 case NanoHorizontalAlign.RIGHT:
                     if (container.fixedWidth != 0) {
                         element.x = container.fixedWidth - getWidth(element) - paddingRight;
                     } else {
                         element.x = paddingLeft + (maxWidth - getWidth(element));
                     }
-                    break;
             }
         }
 
