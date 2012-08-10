@@ -206,7 +206,7 @@ class NanoTileLayout extends NanoBaseLayout {
         return this;
     }
 
-    public function suRowWidth(value:Float):NanoTileLayout {
+    public function suRowHeight(value:Float):NanoTileLayout {
         _rowHeight = value;
         return this;
     }

@@ -1,4 +1,6 @@
 package ;
+import me.silvertoad.nano.haxe.core.group.layout.align.NanoVerticalAlign;
+import me.silvertoad.nano.haxe.core.group.layout.align.NanoHorizontalAlign;
 import me.silvertoad.nano.haxe.core.group.layout.NanoTileLayout;
 import me.silvertoad.nano.haxe.core.group.layout.NanoHorizontalLayout;
 import nme.events.MouseEvent;
@@ -20,7 +22,8 @@ class NanoTest extends Sprite {
         icon = new Bitmap(Assets.getBitmapData("assets/1.png"));
         var group:NanoGroup = new NanoGroup(new NanoTileLayout());
         group
-        .add(getIcon())
+        .suWidth(200)
+        .suHeight(200)
         .add(getIcon())
         .add(getIcon())
         .add(getIcon())
@@ -36,6 +39,8 @@ class NanoTest extends Sprite {
 
     private function getIcon():Bitmap {
         var icon:Bitmap = new Bitmap(Assets.getBitmapData("assets/1.png", false));
+//        icon.scaleX *= Math.random() + 1;
+//        icon.scaleY *= Math.random() + 1;
         return icon;
     }
 
