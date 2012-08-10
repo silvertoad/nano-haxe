@@ -3,7 +3,7 @@
 
     <app title="nano test" main="NanoTest" file="test" package="me.silvertoad.nano.haxe" version="1.0.0" company="CrabsCrew"/>
 
-    <window width="640" height="480" fps="30" orientation="portrait" resizable="true"/>
+    <window width="800" height="600" fps="30" orientation="portrait" resizable="true"/>
 
     <set name="BUILD_DIR" value="../generate/nano_test"/>
     <classpath name="src"/>

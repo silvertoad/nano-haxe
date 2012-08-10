@@ -42,12 +42,12 @@ interface INanoGroup {
     /**
     * Установить рассчетную высоту компонента
     */
-    function setMeasureHeight(mesureHeight:Float):Void;
+    function setMeasureHeight(measureHeight:Float):Void;
 
     /**
     * Установить рассчетную ширину компонента
     */
-    function setMeasureWidth(mesureWidth:Float):Void;
+    function setMeasureWidth(measureWidth:Float):Void;
 
     /**
     * Добавить визульный компонет element в группу

@@ -1,4 +1,5 @@
 package ;
+import me.silvertoad.nano.haxe.core.group.layout.NanoTileLayout;
 import me.silvertoad.nano.haxe.core.group.layout.NanoHorizontalLayout;
 import nme.events.MouseEvent;
 import flash.display.DisplayObject;
@@ -17,12 +18,16 @@ class NanoTest extends Sprite {
     public function new() {
         super();
         icon = new Bitmap(Assets.getBitmapData("assets/1.png"));
-        var group:NanoGroup = new NanoGroup(new NanoHorizontalLayout(0));
-        group.add(getIcon()).add(getIcon());
-        group.build();
+        var group:NanoGroup = new NanoGroup(new NanoTileLayout());
+        group
+        .add(getIcon())
+        .add(getIcon())
+        .add(getIcon())
+        .add(getIcon())
+        .add(getIcon())
+        .build();
         this.addChild(group);
         this.addEventListener(MouseEvent.CLICK, onMouseClick);
-        trace("something");
     }
 
     private function onMouseClick(event:MouseEvent):Void {

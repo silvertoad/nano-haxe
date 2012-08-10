@@ -16,6 +16,10 @@ class NanoGroup extends Sprite, implements INanoGroup {
 
     public function new(?layout:INanoLayout) {
         super();
+        fixedWidth = 0;
+        fixedHeight = 0;
+        _measureHeight = 0;
+        _measureWidth = 0;
         this.layout = layout != null ? layout : new NanoBaseLayout();
     }
 
@@ -51,12 +55,12 @@ class NanoGroup extends Sprite, implements INanoGroup {
         return fixedHeight = height;
     }
 
-    public function setMeasureHeight(mesureHeight:Float) {
-        _measureHeight = mesureHeight;
+    public function setMeasureHeight(measureHeight:Float) {
+        _measureHeight = measureHeight;
     }
 
-    public function setMeasureWidth(mesureWidth:Float) {
-        _measureWidth = mesureWidth;
+    public function setMeasureWidth(measureWidth:Float) {
+        _measureWidth = measureWidth;
     }
 
     public function add(element:DisplayObject):INanoGroup {
@@ -84,6 +88,12 @@ class NanoGroup extends Sprite, implements INanoGroup {
     public function removeAt(index:Int):DisplayObject {
         return this.removeChildAt(index);
     }
+
+    //                    __
+    //.-----.--.--.-----.|  |_.---.-.--.--.    .-----.--.--.-----.---.-.----.
+    //|__ --|  |  |     ||   _|  _  |_   _|    |__ --|  |  |  _  |  _  |   _|
+    //|_____|___  |__|__||____|___._|__.__|    |_____|_____|___  |___._|__|
+    //      |_____|                                        |_____|
 
     public function suGap(value:Float):INanoGroup {
         layout.gap = value;

@@ -7,6 +7,7 @@ import me.silvertoad.nano.haxe.core.group.NanoGroup;
 class NanoBaseLayout implements INanoLayout {
 
     public function new() {
+        this.gap = 0;
         this.paddingLeft = 0;
         this.paddingRight = 0;
         this.paddingTop = 0;
