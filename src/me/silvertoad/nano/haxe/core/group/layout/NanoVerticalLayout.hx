@@ -4,6 +4,7 @@ import me.silvertoad.nano.haxe.core.group.NanoGroup;
 import me.silvertoad.nano.haxe.core.group.layout.align.NanoVerticalAlign;
 
 class NanoVerticalLayout extends NanoBaseLayout {
+
     public function new(?gap:Float = 10) {
         super();
         this.gap = gap;

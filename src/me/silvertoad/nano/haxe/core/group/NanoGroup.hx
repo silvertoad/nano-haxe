@@ -64,7 +64,7 @@ class NanoGroup extends Sprite, implements INanoGroup {
     }
 
     public function add(element:DisplayObject):INanoGroup {
-        return addAt(element, numChildren);
+        return addAt(element, this.numChildren);
     }
 
     public function addAt(element:DisplayObject, index:Int):INanoGroup {

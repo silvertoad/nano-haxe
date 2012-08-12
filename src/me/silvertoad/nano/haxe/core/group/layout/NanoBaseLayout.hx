@@ -74,8 +74,6 @@ class NanoBaseLayout implements INanoLayout {
 
         for (i in 0...container.numChildren) {
             var element:DisplayObject = container.getChildAt(i);
-            trace(i + " element");
-            trace(horizontalAlign);
             switch (horizontalAlign) {
                 case NanoHorizontalAlign.LEFT:
                     element.x = paddingLeft;
