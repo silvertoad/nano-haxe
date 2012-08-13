@@ -1,5 +1,6 @@
 package ;
 
+import nme.display.Graphics;
 import me.silvertoad.nano.haxe.core.group.layout.INanoLayout;
 import me.silvertoad.nano.haxe.core.group.layout.NanoTileLayout;
 import me.silvertoad.nano.haxe.core.group.NanoGroup;
