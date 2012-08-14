@@ -1,6 +1,9 @@
 package ;
 
-import me.silvertoad.nano.haxe.quick.button.QickIconButton;
+import me.silvertoad.nano.haxe.quick.button.ButtonStates;
+import nme.text.TextFormatAlign;
+import me.silvertoad.nano.haxe.quick.button.QuickTextButton;
+import me.silvertoad.nano.haxe.quick.button.QickDisplayObjectButton;
 import nme.display.Graphics;
 import me.silvertoad.nano.haxe.core.group.layout.INanoLayout;
 import me.silvertoad.nano.haxe.core.group.layout.NanoTileLayout;
@@ -19,18 +22,23 @@ class NanoTest extends Sprite {
     public function new() {
         super();
 
-//        var layout:INanoLayout = new NanoTileLayout().suNumColumn(2);
-//        var group:NanoDataGroup<TestVO> = new NanoDataGroup<TestVO>(layout);
-//        group.itemRenderer = TestRenderer;
-//        group.dataProvider = [new TestVO(), new TestVO(), new TestVO(), new TestVO()];
-//        group.build();
-//        addChild(group);
-        var btn:QickIconButton = new QickIconButton();
-        var renderer:TestRenderer = new TestRenderer();
-        renderer.setData(new TestVO());
-        btn.suIcon(renderer);
-        this.addChild(btn);
-//        this.addEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
+        //        var layout:INanoLayout = new NanoTileLayout().suNumColumn(2);
+        //        var group:NanoDataGroup<TestVO> = new NanoDataGroup<TestVO>(layout);
+        //        group.itemRenderer = TestRenderer;
+        //        group.dataProvider = [new TestVO(), new TestVO(), new TestVO(), new TestVO()];
+        //        group.build();
+        //        addChild(group);
+
+        //        var btn:QickDisplayObjectButton = new QickDisplayObjectButton();
+        //        var renderer:TestRenderer = new TestRenderer();
+        //        renderer.setData(new TestVO());
+        //        btn.suDisplayObject(renderer);
+        //        this.addChild(btn);
+
+        this.addEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
+        var textBtn:QuickTextButton = new QuickTextButton();
+        textBtn.text = "Click me!";
+        this.addChild(textBtn);
     }
 
     private function onMouseMove(event:MouseEvent):Void {
