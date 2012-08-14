@@ -22,16 +22,16 @@ class NanoBaseButton extends NanoButtonBase {
         this.removeEventListener(MouseEvent.MOUSE_UP, mouseUpHandler);
     }
 
-    private function mouseOutHandler(event:Event):void {
+    private function mouseOutHandler(event:Event):Void {
     }
 
-    private function mouseOverHandler(event:MouseEvent):void {
+    private function mouseOverHandler(event:MouseEvent):Void {
     }
 
-    private function mouseUpHandler(event:MouseEvent):void {
+    private function mouseUpHandler(event:MouseEvent):Void {
     }
 
-    private function mouseDownHandler(event:MouseEvent):void {
+    private function mouseDownHandler(event:MouseEvent):Void {
     }
 
     override public function setEnabled(enabled:Bool):Void {
