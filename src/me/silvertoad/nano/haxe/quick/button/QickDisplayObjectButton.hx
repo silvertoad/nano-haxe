@@ -1,5 +1,5 @@
 package me.silvertoad.nano.haxe.quick.button;
-import me.silvertoad.nano.haxe.utils.HashMap;
+
 import nme.events.Event;
 import nme.events.MouseEvent;
 import nme.display.DisplayObject;
