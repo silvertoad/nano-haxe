@@ -29,16 +29,16 @@ class NanoTest extends Sprite {
         //        group.build();
         //        addChild(group);
 
-        //        var btn:QickDisplayObjectButton = new QickDisplayObjectButton();
-        //        var renderer:TestRenderer = new TestRenderer();
-        //        renderer.setData(new TestVO());
-        //        btn.suDisplayObject(renderer);
-        //        this.addChild(btn);
+        var btn:QickDisplayObjectButton = new QickDisplayObjectButton();
+        var renderer:TestRenderer = new TestRenderer();
+        renderer.setData(new TestVO());
+        btn.suDisplayObject(renderer);
+        this.addChild(btn);
 
-        this.addEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
-        var textBtn:QuickTextButton = new QuickTextButton();
-        textBtn.text = "Click me!";
-        this.addChild(textBtn);
+        //        this.addEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
+        //        var textBtn:QuickTextButton = new QuickTextButton();
+        //        textBtn.text = "Click me!";
+        //        this.addChild(textBtn);
     }
 
     private function onMouseMove(event:MouseEvent):Void {

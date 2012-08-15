@@ -1,5 +1,6 @@
 package me.silvertoad.nano.haxe.quick.button;
-import me.silvertoad.nano.haxe.utils.HashMap;
+import nme.display.GradientType;
+import nme.geom.Matrix;
 import nme.events.Event;
 import nme.events.MouseEvent;
 import nme.display.DisplayObject;
@@ -56,11 +57,29 @@ class QickDisplayObjectButton extends NanoBaseButton {
         return 3;
     }
 
+    private function stoke():Float {
+        return 1.5;
+    }
+
     private function render(state:String):Void {
+        advancedRender(0x000000, 0xFFFF00, 0xff00ff);
+    }
+
+    private function advancedRender(stokeColour:Int, startColour:Int, endColour:Int):Void {
         this.graphics.clear();
-        this.graphics.beginFill(_hash.get(state));
+        this.graphics.beginFill(stokeColour);
         var round:Float = Math.min(nWidth, nHeight) * 0.1;
-        this.graphics.drawRoundRectComplex(0, 0, nWidth, nHeight, round, round, round, round);
+        this.graphics.drawRect(0, 0, nWidth, nHeight/*, round, round, round, round*/);
+        this.graphics.endFill();
+
+        var innerHeight = nHeight - stoke() * 2;
+        var innerWidth = nWidth - stoke() * 2;
+        round = Math.min(innerWidth, innerHeight) * 0.1;
+        var matr:Matrix = new Matrix();
+        matr.createGradientBox(innerWidth, innerHeight, 0, stoke(), stoke());
+        matr.rotate(Math.PI / 180);
+        this.graphics.beginGradientFill(GradientType.LINEAR, [startColour, endColour], [1, 1], [0, 255]);
+        this.graphics.drawRect(stoke(), stoke(), innerWidth, innerHeight/*, round, round, round, round*/);
         this.graphics.endFill();
     }
 }
