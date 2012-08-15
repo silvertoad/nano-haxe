@@ -7,13 +7,13 @@ import nme.display.DisplayObject;
 import nme.display.DisplayObject;
 import me.silvertoad.nano.haxe.core.button.NanoBaseButton;
 
-class QickDisplayObjectButton extends NanoBaseButton {
+class QuickDisplayObjectButton extends NanoBaseButton {
 
     private var _displayObject:DisplayObject;
 
-    private var _hash:Hash<Int>;
-
     private var _currentState:String;
+
+    private var _hash:Hash<Int>;
 
     public function new() {
         super();
@@ -27,7 +27,7 @@ class QickDisplayObjectButton extends NanoBaseButton {
         this.mouseChildren = false;
     }
 
-    public function suDisplayObject(icon:DisplayObject):QickDisplayObjectButton {
+    public function suDisplayObject(icon:DisplayObject):QuickDisplayObjectButton {
         _displayObject = icon;
         this.nWidth = _displayObject.width + getIndent() * 2;
         this.nHeight = _displayObject.height + getIndent() * 2;
@@ -57,12 +57,12 @@ class QickDisplayObjectButton extends NanoBaseButton {
         return 3;
     }
 
-    private function stoke():Float {
-        return 1.5;
+    private function stroke():Float {
+        return 2;
     }
 
     private function render(state:String):Void {
-        advancedRender(0x000000, 0xFFFF00, 0xff00ff);
+        advancedRender(0x000000, 0xFFFFFF, 0x000000);
     }
 
     private function advancedRender(stokeColour:Int, startColour:Int, endColour:Int):Void {
@@ -72,14 +72,13 @@ class QickDisplayObjectButton extends NanoBaseButton {
         this.graphics.drawRect(0, 0, nWidth, nHeight/*, round, round, round, round*/);
         this.graphics.endFill();
 
-        var innerHeight = nHeight - stoke() * 2;
-        var innerWidth = nWidth - stoke() * 2;
+        var innerHeight = nHeight - stroke() * 2;
+        var innerWidth = nWidth - stroke() * 2;
         round = Math.min(innerWidth, innerHeight) * 0.1;
         var matr:Matrix = new Matrix();
-        matr.createGradientBox(innerWidth, innerHeight, 0, stoke(), stoke());
-        matr.rotate(Math.PI / 180);
+        matr.createGradientBox(innerWidth, innerHeight, Math.PI, 0, 0);
         this.graphics.beginGradientFill(GradientType.LINEAR, [startColour, endColour], [1, 1], [0, 255]);
-        this.graphics.drawRect(stoke(), stoke(), innerWidth, innerHeight/*, round, round, round, round*/);
+        this.graphics.drawRect(stroke(), stroke(), innerWidth, innerHeight/*, round, round, round, round*/);
         this.graphics.endFill();
     }
 }

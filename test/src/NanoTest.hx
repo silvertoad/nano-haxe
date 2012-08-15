@@ -3,7 +3,7 @@ package ;
 import me.silvertoad.nano.haxe.quick.button.ButtonStates;
 import nme.text.TextFormatAlign;
 import me.silvertoad.nano.haxe.quick.button.QuickTextButton;
-import me.silvertoad.nano.haxe.quick.button.QickDisplayObjectButton;
+import me.silvertoad.nano.haxe.quick.button.QuickDisplayObjectButton;
 import nme.display.Graphics;
 import me.silvertoad.nano.haxe.core.group.layout.INanoLayout;
 import me.silvertoad.nano.haxe.core.group.layout.NanoTileLayout;
@@ -29,16 +29,16 @@ class NanoTest extends Sprite {
         //        group.build();
         //        addChild(group);
 
-        var btn:QickDisplayObjectButton = new QickDisplayObjectButton();
-        var renderer:TestRenderer = new TestRenderer();
-        renderer.setData(new TestVO());
-        btn.suDisplayObject(renderer);
-        this.addChild(btn);
+//                var btn:QuickDisplayObjectButton = new QuickDisplayObjectButton();
+//                var renderer:TestRenderer = new TestRenderer();
+//                renderer.setData(new TestVO());
+//                btn.suDisplayObject(renderer);
+//                this.addChild(btn);
 
-        //        this.addEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
-        //        var textBtn:QuickTextButton = new QuickTextButton();
-        //        textBtn.text = "Click me!";
-        //        this.addChild(textBtn);
+        this.addEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
+        var textBtn:QuickTextButton = new QuickTextButton();
+        textBtn.text = "Click me!";
+        this.addChild(textBtn);
     }
 
     private function onMouseMove(event:MouseEvent):Void {
