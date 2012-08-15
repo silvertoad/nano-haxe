@@ -1,9 +1,11 @@
 package me.silvertoad.nano.haxe.core.group.layout;
+
 import me.silvertoad.nano.haxe.core.group.INanoGroup;
 import me.silvertoad.nano.haxe.core.group.layout.align.NanoVerticalAlign;
 import me.silvertoad.nano.haxe.core.group.layout.align.NanoHorizontalAlign;
 import nme.display.DisplayObject;
 import me.silvertoad.nano.haxe.core.group.NanoGroup;
+
 class NanoBaseLayout implements INanoLayout {
 
     public function new() {
@@ -28,6 +30,7 @@ class NanoBaseLayout implements INanoLayout {
     /**
     * Переформатировать
     */
+
     public function realign() {
         alignVertical();
         alignHorizontal();
@@ -42,22 +45,23 @@ class NanoBaseLayout implements INanoLayout {
 
         for (i in 0...container.numChildren) {
             var element:DisplayObject = container.getChildAt(i);
+            var height = getHeight(element);
             switch (verticalAlign) {
                 case NanoVerticalAlign.TOP:
                     element.y = paddingTop;
                 case NanoVerticalAlign.MIDDLE:
                     var _y:Float;
                     if (container.fixedHeight != 0) {
-                        _y = (container.fixedHeight - getHeight(element) + paddingTop - paddingBottom) / 2;
+                        _y = (container.fixedHeight - height + paddingTop - paddingBottom) / 2;
                         element.y = _y;
                     } else {
-                        element.y = paddingTop + (maxHeight - getHeight(element)) / 2;
+                        element.y = paddingTop + (maxHeight - height) / 2;
                     }
                 case NanoVerticalAlign.BOTTOM:
                     if (container.fixedHeight != 0) {
-                        element.y = container.fixedHeight - getHeight(element) - paddingBottom;
+                        element.y = container.fixedHeight - height - paddingBottom;
                     } else {
-                        element.y = paddingTop + (maxHeight - getHeight(element));
+                        element.y = paddingTop + (maxHeight - height);
                     }
             }
         }

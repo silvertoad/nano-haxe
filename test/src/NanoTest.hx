@@ -5,7 +5,7 @@ import me.silvertoad.nano.haxe.core.button.NanoIconButton;
 import me.silvertoad.nano.haxe.quick.button.ButtonStates;
 import nme.text.TextFormatAlign;
 import me.silvertoad.nano.haxe.quick.button.QuickTextButton;
-import me.silvertoad.nano.haxe.quick.button.QickDisplayObjectButton;
+import me.silvertoad.nano.haxe.quick.button.QuickDisplayObjectButton;
 import nme.display.Graphics;
 import me.silvertoad.nano.haxe.core.group.layout.INanoLayout;
 import me.silvertoad.nano.haxe.core.group.layout.NanoTileLayout;
