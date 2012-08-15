@@ -1,8 +1,10 @@
 package me.silvertoad.nano.haxe.core.button;
+
 import nme.events.Event;
 import nme.events.MouseEvent;
 import me.silvertoad.nano.haxe.utils.IDestroyable;
 import me.silvertoad.nano.haxe.core.group.NanoGroup;
+
 class NanoButtonBase extends NanoGroup, implements IDestroyable {
 
     private var _enabled:Bool;

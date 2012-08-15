@@ -1,5 +1,6 @@
 package ;
 
+import me.silvertoad.nano.haxe.quick.button.QuickTextTooltip;
 import me.silvertoad.nano.haxe.core.button.NanoIconButton;
 import me.silvertoad.nano.haxe.quick.button.ButtonStates;
 import nme.text.TextFormatAlign;
@@ -43,6 +44,8 @@ class NanoTest extends Sprite {
 
         var testIconButton:NanoIconButton = new NanoIconButton(new Bitmap(Assets.getBitmapData("assets/1.png", false)));
         this.addChild(testIconButton);
+
+        new QuickTextTooltip(testIconButton, "im tooltip baby");
     }
 
     private function onMouseMove(event:MouseEvent):Void {

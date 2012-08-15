@@ -1,6 +1,8 @@
 package me.silvertoad.nano.haxe.core.button;
+
 import nme.events.Event;
 import nme.events.MouseEvent;
+
 class NanoBaseButton extends NanoButtonBase {
     public function new() {
         super();

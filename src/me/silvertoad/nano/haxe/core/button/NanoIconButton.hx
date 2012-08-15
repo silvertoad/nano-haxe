@@ -6,7 +6,7 @@ import nme.display.Shape;
 import nme.display.Bitmap;
 
 /**
- * Кнопка на основе иконки
+ * Icon based button
  */
 class NanoIconButton extends NanoBaseButton {
 
