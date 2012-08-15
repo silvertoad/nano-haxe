@@ -54,7 +54,7 @@ class NanoTest extends Sprite {
     }
 
     public static function main() {
-#if (flash9 || flash10)
+        #if (flash9 || flash10)
         haxe.Log.trace = function(v,?pos) { untyped __global__["trace"](pos.className+"#"+pos.methodName+"("+pos.lineNumber+"):",v); }
         #elseif flash
         haxe.Log.trace = function(v,?pos) { flash.Lib.trace(pos.className+"#"+pos.methodName+"("+pos.lineNumber+"): "+v); }
