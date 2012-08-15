@@ -58,7 +58,7 @@ class QickDisplayObjectButton extends NanoBaseButton {
         return 3;
     }
 
-    private function stoke():Float {
+    private function stroke():Float {
         return 1.5;
     }
 
@@ -73,14 +73,14 @@ class QickDisplayObjectButton extends NanoBaseButton {
         this.graphics.drawRect(0, 0, nWidth, nHeight/*, round, round, round, round*/);
         this.graphics.endFill();
 
-        var innerHeight = nHeight - stoke() * 2;
-        var innerWidth = nWidth - stoke() * 2;
+        var innerHeight = nHeight - stroke() * 2;
+        var innerWidth = nWidth - stroke() * 2;
         round = Math.min(innerWidth, innerHeight) * 0.1;
         var matr:Matrix = new Matrix();
-        matr.createGradientBox(innerWidth, innerHeight, 0, stoke(), stoke());
+        matr.createGradientBox(innerWidth, innerHeight, 0, stroke(), stroke());
         matr.rotate(Math.PI / 180);
         this.graphics.beginGradientFill(GradientType.LINEAR, [startColour, endColour], [1, 1], [0, 255]);
-        this.graphics.drawRect(stoke(), stoke(), innerWidth, innerHeight/*, round, round, round, round*/);
+        this.graphics.drawRect(stroke(), stroke(), innerWidth, innerHeight/*, round, round, round, round*/);
         this.graphics.endFill();
     }
 }
