@@ -1,5 +1,6 @@
 package me.silvertoad.nano.haxe.core.group.layout;
 
+import me.silvertoad.nano.haxe.utils.LayoutUtils;
 import me.silvertoad.nano.haxe.core.group.INanoGroup;
 import me.silvertoad.nano.haxe.core.group.layout.align.NanoVerticalAlign;
 import me.silvertoad.nano.haxe.core.group.layout.align.NanoHorizontalAlign;
@@ -45,7 +46,7 @@ class NanoBaseLayout implements INanoLayout {
 
         for (i in 0...container.numChildren) {
             var element:DisplayObject = container.getChildAt(i);
-            var height = getHeight(element);
+            var height = LayoutUtils.getHeight(element);
             switch (verticalAlign) {
                 case NanoVerticalAlign.TOP:
                     element.y = paddingTop;
@@ -78,20 +79,21 @@ class NanoBaseLayout implements INanoLayout {
 
         for (i in 0...container.numChildren) {
             var element:DisplayObject = container.getChildAt(i);
+            var width = LayoutUtils.getWidth(element);
             switch (horizontalAlign) {
                 case NanoHorizontalAlign.LEFT:
                     element.x = paddingLeft;
                 case NanoHorizontalAlign.CENTER:
                     if (container.fixedWidth != 0) {
-                        element.x = (container.fixedWidth - getWidth(element) + paddingLeft - paddingRight) / 2;
+                        element.x = (container.fixedWidth - width + paddingLeft - paddingRight) / 2;
                     } else {
-                        element.x = paddingLeft + (maxWidth - getWidth(element)) / 2;
+                        element.x = paddingLeft + (maxWidth - width) / 2;
                     }
                 case NanoHorizontalAlign.RIGHT:
                     if (container.fixedWidth != 0) {
-                        element.x = container.fixedWidth - getWidth(element) - paddingRight;
+                        element.x = container.fixedWidth - width - paddingRight;
                     } else {
-                        element.x = paddingLeft + (maxWidth - getWidth(element));
+                        element.x = paddingLeft + (maxWidth - width);
                     }
             }
         }
@@ -109,23 +111,9 @@ class NanoBaseLayout implements INanoLayout {
         var maxSide:Float = 0;
         for (i in 0...container.numChildren) {
             var element:DisplayObject = container.getChildAt(i);
-            var tmpSide:Float = byWidth ? getWidth(element) : getHeight(element);
+            var tmpSide:Float = byWidth ? LayoutUtils.getWidth(element) : LayoutUtils.getHeight(element);
             maxSide = tmpSide > maxSide ? tmpSide : maxSide;
         }
         return maxSide;
-    }
-
-    private function getWidth(element:DisplayObject):Float {
-        if (Std.is(element, INanoGroup)) {
-            return cast(element, INanoGroup).nWidth;
-        }
-        return element.width;
-    }
-
-    private function getHeight(element:DisplayObject):Float {
-        if (Std.is(element, INanoGroup)) {
-            return cast(element, INanoGroup).nHeight;
-        }
-        return element.height;
     }
 }

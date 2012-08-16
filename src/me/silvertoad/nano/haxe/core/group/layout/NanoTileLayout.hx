@@ -1,5 +1,6 @@
 package me.silvertoad.nano.haxe.core.group.layout;
 
+import me.silvertoad.nano.haxe.utils.LayoutUtils;
 import me.silvertoad.nano.haxe.core.group.layout.align.NanoVerticalAlign;
 import me.silvertoad.nano.haxe.core.group.layout.align.NanoHorizontalAlign;
 import nme.display.DisplayObject;
@@ -54,7 +55,7 @@ class NanoTileLayout extends NanoBaseLayout {
                     }
                 }
                 else {
-                    var elementWidth:Float = (_columnWidth != 0) ? _columnWidth : getWidth(prevElement);
+                    var elementWidth:Float = (_columnWidth != 0) ? _columnWidth : LayoutUtils.getWidth(prevElement);
                     element.x = prevElement.x + elementWidth + gap;
                 }
                 prevElement = element;
@@ -97,7 +98,7 @@ class NanoTileLayout extends NanoBaseLayout {
                     }
                 }
                 else {
-                    var elementHeight:Float = (_rowHeight != 0) ? _rowHeight : getHeight(prevElement);
+                    var elementHeight:Float = (_rowHeight != 0) ? _rowHeight : LayoutUtils.getHeight(prevElement);
                     element.y = prevElement.y + elementHeight + gap;
                 }
                 prevElement = element;
@@ -119,7 +120,7 @@ class NanoTileLayout extends NanoBaseLayout {
                 if (elementIndex >= container.numChildren) break;
 
                 var e:DisplayObject = container.getChildAt(elementIndex);
-                tmpElementWidth += (getWidth(e) + gap);
+                tmpElementWidth += (LayoutUtils.getWidth(e) + gap);
             }
             elementsHeight = Math.max(elementsHeight, tmpElementWidth);
             tmpElementWidth = -gap;
@@ -139,7 +140,7 @@ class NanoTileLayout extends NanoBaseLayout {
                 if (elementIndex >= container.numChildren) break;
 
                 var e:DisplayObject = container.getChildAt(elementIndex);
-                tmpElementHeight += (getHeight(e) + gap);
+                tmpElementHeight += (LayoutUtils.getHeight(e) + gap);
             }
             elementsHeight = Math.max(elementsHeight, tmpElementHeight);
             tmpElementHeight = -gap;

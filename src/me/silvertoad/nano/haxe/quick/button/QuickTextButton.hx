@@ -16,8 +16,8 @@ class QuickTextButton extends QuickDisplayObjectButton {
         super();
         _textField = new TextField();
         var format = new TextFormat();
-//        format.align = TextFormatAlign.CENTER;
-//        _textField.defaultTextFormat = format;
+        format.align = TextFormatAlign.CENTER;
+        _textField.defaultTextFormat = format;
         _textField.autoSize = TextFieldAutoSize.LEFT;
         suDisplayObject(_textField);
     }

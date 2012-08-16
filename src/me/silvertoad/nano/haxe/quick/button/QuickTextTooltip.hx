@@ -53,8 +53,8 @@ class QuickTextTooltip extends NanoGroup {
         }
 
         // События
-        target.addEventListener(MouseEvent.MOUSE_OVER, onMouseOver, false, 0, true);
-        target.addEventListener(MouseEvent.MOUSE_OUT, onMouseOut, false, 0, true);
+        target.addEventListener(MouseEvent.MOUSE_OVER, onMouseOver);
+        target.addEventListener(MouseEvent.MOUSE_OUT, onMouseOut);
     }
 
     private function onStage(e:Event):Void {

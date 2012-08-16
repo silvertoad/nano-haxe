@@ -1,5 +1,7 @@
 package ;
 
+import nme.geom.Matrix;
+import nme.display.GradientType;
 import me.silvertoad.nano.haxe.quick.button.QuickTextTooltip;
 import me.silvertoad.nano.haxe.core.button.NanoIconButton;
 import me.silvertoad.nano.haxe.quick.button.ButtonStates;
@@ -24,28 +26,27 @@ class NanoTest extends Sprite {
     public function new() {
         super();
 
-//        var layout:INanoLayout = new NanoTileLayout().suNumColumn(2);
-//        var group:NanoDataGroup<TestVO> = new NanoDataGroup<TestVO>(layout);
-//        group.itemRenderer = TestRenderer;
-//        group.dataProvider = [new TestVO(), new TestVO(), new TestVO(), new TestVO()];
-//        group.build();
-//        addChild(group);
+        //        this.addEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
+        //        var textBtn:QuickTextButton = new QuickTextButton();
+        //        textBtn.text = "Click me!\nPleace...";
+        //        this.addChild(textBtn);
 
-//        var btn:QickDisplayObjectButton = new QickDisplayObjectButton();
-//        var renderer:TestRenderer = new TestRenderer();
-//        renderer.setData(new TestVO());
-//        btn.suDisplayObject(renderer);
-//        this.addChild(btn);
+        //        var testIconButton:NanoIconButton = new NanoIconButton(new Bitmap(Assets.getBitmapData("assets/1.png", false)));
+        //        this.addChild(testIconButton);
 
-        this.addEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
-        var textBtn:QuickTextButton = new QuickTextButton();
-        textBtn.text = "Click me!";
-        this.addChild(textBtn);
+        //        new QuickTextTooltip(textBtn, "im tooltip baby");
 
-        var testIconButton:NanoIconButton = new NanoIconButton(new Bitmap(Assets.getBitmapData("assets/1.png", false)));
-        this.addChild(testIconButton);
+        var btn:QuickTextButton = new QuickTextButton();
+        btn.text = "some text, here";
+        this.addChild(btn);
 
-        new QuickTextTooltip(testIconButton, "im tooltip baby");
+        //        var s:Sprite = new Sprite();
+        //        var m:Matrix = new Matrix();
+        //        m.createGradientBox(100, 40, (Math.PI / 180) * 90, 0, 0);
+        //        s.graphics.beginGradientFill(GradientType.LINEAR, [0xFF00FF, 0x000000], [1, 1], [0, 255], m);
+        //        s.graphics.drawRect(0, 0, 100, 40);
+        //        s.graphics.endFill();
+        //        this.addChild(s);
     }
 
     private function onMouseMove(event:MouseEvent):Void {
