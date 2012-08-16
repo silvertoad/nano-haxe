@@ -1,6 +1,7 @@
 package me.silvertoad.nano.haxe.core.group.layout;
+
 import nme.display.DisplayObject;
-import me.silvertoad.nano.haxe.core.group.NanoGroup;
+import me.silvertoad.nano.haxe.utils.LayoutUtils;
 import me.silvertoad.nano.haxe.core.group.layout.align.NanoVerticalAlign;
 
 class NanoVerticalLayout extends NanoBaseLayout {
@@ -41,7 +42,7 @@ class NanoVerticalLayout extends NanoBaseLayout {
                         }
                 }
             } else {
-                element.y = prevElement.y + getHeight(prevElement) + gap;
+                element.y = prevElement.y + LayoutUtils.getHeight(prevElement) + gap;
             }
             prevElement = element;
         }

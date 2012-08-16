@@ -1,5 +1,7 @@
 package me.silvertoad.nano.haxe.core.group.layout;
+
 import nme.display.DisplayObject;
+import me.silvertoad.nano.haxe.utils.LayoutUtils;
 import me.silvertoad.nano.haxe.core.group.layout.align.NanoHorizontalAlign;
 
 class NanoHorizontalLayout extends NanoBaseLayout {
@@ -39,7 +41,7 @@ class NanoHorizontalLayout extends NanoBaseLayout {
                         }
                 }
             } else {
-                element.x = prevElement.x + getWidth(prevElement) + gap;
+                element.x = prevElement.x + LayoutUtils.getWidth(prevElement) + gap;
             }
             prevElement = element;
         }

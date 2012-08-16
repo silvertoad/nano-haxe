@@ -15,5 +15,4 @@ class LayoutUtils {
         }
         return element.width;
     }
-
 }

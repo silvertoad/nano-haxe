@@ -1,5 +1,6 @@
 package me.silvertoad.nano.haxe.quick.button;
 
+import nme.errors.ArgumentError;
 import nme.filters.GlowFilter;
 import nme.filters.DropShadowFilter;
 import nme.filters.GlowFilter;
@@ -18,16 +19,8 @@ class QuickDisplayObjectButton extends NanoBaseButton {
 
     private var _currentState:String;
 
-    private var _hash:Hash<Int>;
-
     public function new() {
         super();
-
-        _hash = new Hash<Int>();
-        _hash.set(ButtonStates.UP, 0xEDEFF7);
-        _hash.set(ButtonStates.DOWN, 0x00FFFF);
-        _hash.set(ButtonStates.OVER, 0xEDEFF7);
-        _hash.set(ButtonStates.OUT, 0x00FF00);
         _currentState = ButtonStates.OUT;
         this.mouseChildren = false;
     }
@@ -67,18 +60,30 @@ class QuickDisplayObjectButton extends NanoBaseButton {
     }
 
     private function render(state:String):Void {
-        advancedRender(0x000000, 0xFFFFFF, 0xD1D0B0);
+        _currentState = state;
+        switch(_currentState){
+            case ButtonStates.OUT:
+                advancedRender(0xF5F4E4, 0xD1D0B0);
+            case ButtonStates.OVER:
+                advancedRender(0xFFFFFF, 0xD1D0B0);
+            case ButtonStates.DOWN:
+                advancedRender(0xF5F4E4, 0xD1D0B0);
+            case ButtonStates.UP:
+                advancedRender(0xFFFFFF, 0xD1D0B0);
+            default:
+                throw new ArgumentError("Undefined state: " + state);
+        }
     }
 
-    private function advancedRender(stokeColour:Int, startColour:Int, endColour:Int):Void {
+    private function advancedRender(startColour:Int, endColour:Int, glowColour:Int = 0x0):Void {
         this.graphics.clear();
         var innerHeight = nHeight - stroke() * 2;
         var innerWidth = nWidth - stroke() * 2;
         var matr:Matrix = new Matrix();
         matr.createGradientBox(innerWidth, innerHeight, Math.PI / 2, stroke(), stroke());
         this.graphics.beginGradientFill(GradientType.LINEAR, [startColour, endColour], [1, 1], [0, 255], matr);
-        this.graphics.drawRect(stroke(), stroke(), innerWidth, innerHeight/*, round, round, round, round*/);
+        this.graphics.drawRect(stroke(), stroke(), innerWidth, innerHeight);
         this.graphics.endFill();
-        this.filters = [new GlowFilter(0x0, 0.3, 3, 3), new DropShadowFilter(2)];
+        this.filters = [new GlowFilter(glowColour, 0.3, 3, 3), new DropShadowFilter(2)];
     }
 }
