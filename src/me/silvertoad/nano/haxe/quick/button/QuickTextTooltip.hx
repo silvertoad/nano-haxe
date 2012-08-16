@@ -1,5 +1,10 @@
 package me.silvertoad.nano.haxe.quick.button;
 
+import nme.display.GradientType;
+import nme.filters.GlowFilter;
+import nme.filters.DropShadowFilter;
+import nme.geom.Matrix;
+import me.silvertoad.nano.haxe.utils.IDestroyable;
 import nme.text.TextFieldAutoSize;
 import nme.text.TextField;
 import nme.events.MouseEvent;
@@ -12,11 +17,12 @@ import me.silvertoad.nano.haxe.core.group.NanoGroup;
 /**
  * Base tooltip element
  */
-class QuickTextTooltip extends NanoGroup {
+class QuickTextTooltip extends NanoGroup, implements IDestroyable {
 
-    private static var PADDING:Float = 2;
-    private static var PADDING_LEFT:Float = 15;
-    private static var PADDING_TOP:Float = 15;
+    private static var INNER_PADDING:Float = 2;
+
+    private static var MOUSE_PADDING_LEFT:Float = 15;
+    private static var MOUSE_PADDING_TOP:Float = 15;
 
     private var _target:DisplayObject;
     private var _context:Stage;
@@ -34,27 +40,32 @@ class QuickTextTooltip extends NanoGroup {
         this.mouseEnabled = false;
 
         // Layout
+        _background = new Sprite();
+        add(_background);
+
         _textField = new TextField();
         _textField.mouseEnabled = false;
-        _textField.x = _textField.y = PADDING;
         _textField.autoSize = TextFieldAutoSize.LEFT;
-        this.addChild(_textField);
-
-        _background = new Sprite();
-        this.addChildAt(_background, 0);
+        add(_textField);
 
         this.text = text;
 
         // Context
-        if (target.stage != null) {
+        if (_target.stage != null) {
             this.setContext();
         } else {
-            target.addEventListener(Event.ADDED_TO_STAGE, this.onStage);
+            _target.addEventListener(Event.ADDED_TO_STAGE, this.onStage);
         }
 
         // События
-        target.addEventListener(MouseEvent.MOUSE_OVER, onMouseOver);
-        target.addEventListener(MouseEvent.MOUSE_OUT, onMouseOut);
+        _target.addEventListener(MouseEvent.MOUSE_OVER, onMouseOver);
+        _target.addEventListener(MouseEvent.MOUSE_OUT, onMouseOut);
+    }
+
+    public function destroy():Void {
+        _target.removeEventListener(MouseEvent.MOUSE_OVER, onMouseOver);
+        _target.removeEventListener(MouseEvent.MOUSE_OUT, onMouseOut);
+        _target.removeEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
     }
 
     private function onStage(e:Event):Void {
@@ -70,12 +81,20 @@ class QuickTextTooltip extends NanoGroup {
      * Перерисовать фон
      */
     private function rebuildBackground():Void {
+        var innerWidth = _textField.width + INNER_PADDING * 2;
+        var innerHeight = _textField.height + INNER_PADDING * 2;
+
+        var matrix:Matrix = new Matrix();
+        matrix.createGradientBox(innerWidth, innerHeight, Math.PI / 2, 1, 1);
+
         _background.graphics.clear();
         _background.graphics.lineStyle(1, 0x989898);
-        _background.graphics.beginFill(0xfffddd, 0.7);
-        _background.graphics.drawRect(0, 0, _textField.width + PADDING * 2, _textField.height + PADDING * 2);
+        _background.graphics.beginGradientFill(GradientType.LINEAR, [0xFFFFFF, 0xD1D0B0], [1, 1], [0, 255], matrix);
+        _background.graphics.drawRect(0, 0, innerWidth, innerHeight);
         _background.graphics.endFill();
         _background.alpha = 0.8;
+
+        _background.filters = [new GlowFilter(0x0, 0.3, 3, 3), new DropShadowFilter(2)];
     }
 
     /**
@@ -90,9 +109,9 @@ class QuickTextTooltip extends NanoGroup {
     private function _setText(value:String):String {
         _textField.text = value;
         this.rebuildBackground();
+        this.build();
         return value;
     }
-
 
     /**
      * События
@@ -117,12 +136,12 @@ class QuickTextTooltip extends NanoGroup {
     }
 
     private function onMouseMove(e:MouseEvent = null):Void {
-        var deltaX:Float = _context.mouseX + this.width + PADDING_LEFT > _context.stageWidth
+        var deltaX:Float = _context.mouseX + this.width + MOUSE_PADDING_LEFT > _context.stageWidth
             ? (_context.mouseX - this.width)
-            : (_context.mouseX) + PADDING_LEFT;
-        var deltaY:Float = _context.mouseY + this.height + PADDING_TOP > _context.stageHeight
+            : (_context.mouseX) + MOUSE_PADDING_LEFT;
+        var deltaY:Float = _context.mouseY + this.height + MOUSE_PADDING_TOP > _context.stageHeight
             ? (_context.mouseY - this.height)
-            : (_context.mouseY) + PADDING_TOP;
+            : (_context.mouseY) + MOUSE_PADDING_TOP;
         this.x = deltaX;
         this.y = deltaY;
     }

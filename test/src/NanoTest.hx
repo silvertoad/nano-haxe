@@ -34,11 +34,11 @@ class NanoTest extends Sprite {
         //        var testIconButton:NanoIconButton = new NanoIconButton(new Bitmap(Assets.getBitmapData("assets/1.png", false)));
         //        this.addChild(testIconButton);
 
-        //        new QuickTextTooltip(textBtn, "im tooltip baby");
-
         var btn:QuickTextButton = new QuickTextButton();
         btn.text = "some text, here";
         this.addChild(btn);
+
+        new QuickTextTooltip(btn, "im tooltip baby");
 
         //        var s:Sprite = new Sprite();
         //        var m:Matrix = new Matrix();

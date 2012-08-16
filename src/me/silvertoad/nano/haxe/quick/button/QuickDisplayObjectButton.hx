@@ -79,9 +79,9 @@ class QuickDisplayObjectButton extends NanoBaseButton {
         this.graphics.clear();
         var innerHeight = nHeight - stroke() * 2;
         var innerWidth = nWidth - stroke() * 2;
-        var matr:Matrix = new Matrix();
-        matr.createGradientBox(innerWidth, innerHeight, Math.PI / 2, stroke(), stroke());
-        this.graphics.beginGradientFill(GradientType.LINEAR, [startColour, endColour], [1, 1], [0, 255], matr);
+        var matrix:Matrix = new Matrix();
+        matrix.createGradientBox(innerWidth, innerHeight, Math.PI / 2, stroke(), stroke());
+        this.graphics.beginGradientFill(GradientType.LINEAR, [startColour, endColour], [1, 1], [0, 255], matrix);
         this.graphics.drawRect(stroke(), stroke(), innerWidth, innerHeight);
         this.graphics.endFill();
         this.filters = [new GlowFilter(glowColour, 0.3, 3, 3), new DropShadowFilter(2)];
