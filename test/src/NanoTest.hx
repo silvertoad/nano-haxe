@@ -25,28 +25,10 @@ class NanoTest extends Sprite {
 
     public function new() {
         super();
-
-        //        this.addEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
-        //        var textBtn:QuickTextButton = new QuickTextButton();
-        //        textBtn.text = "Click me!\nPleace...";
-        //        this.addChild(textBtn);
-
-        //        var testIconButton:NanoIconButton = new NanoIconButton(new Bitmap(Assets.getBitmapData("assets/1.png", false)));
-        //        this.addChild(testIconButton);
-
         var btn:QuickTextButton = new QuickTextButton();
         btn.text = "some text, here";
         this.addChild(btn);
-
         new QuickTextTooltip(btn, "im tooltip baby");
-
-        //        var s:Sprite = new Sprite();
-        //        var m:Matrix = new Matrix();
-        //        m.createGradientBox(100, 40, (Math.PI / 180) * 90, 0, 0);
-        //        s.graphics.beginGradientFill(GradientType.LINEAR, [0xFF00FF, 0x000000], [1, 1], [0, 255], m);
-        //        s.graphics.drawRect(0, 0, 100, 40);
-        //        s.graphics.endFill();
-        //        this.addChild(s);
     }
 
     private function onMouseMove(event:MouseEvent):Void {

@@ -27,7 +27,7 @@ class QuickDisplayObjectButton extends NanoBaseButton {
 
     public function suDisplayObject(icon:DisplayObject):QuickDisplayObjectButton {
         _displayObject = icon;
-        this.nWidth = LayoutUtils.getWidth(_displayObject) + getIndent() * 2;
+        this.nWidth = LayoutUtils.getWidth(_displayObject) + getIndent() * 4;
         this.nHeight = LayoutUtils.getHeight(_displayObject) + getIndent() * 2;
         this.add(_displayObject);
         this.build();

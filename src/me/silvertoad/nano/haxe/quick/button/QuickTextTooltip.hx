@@ -80,6 +80,7 @@ class QuickTextTooltip extends NanoGroup, implements IDestroyable {
     /**
      * Перерисовать фон
      */
+
     private function rebuildBackground():Void {
         var innerWidth = _textField.width + INNER_PADDING * 2;
         var innerHeight = _textField.height + INNER_PADDING * 2;
@@ -94,7 +95,7 @@ class QuickTextTooltip extends NanoGroup, implements IDestroyable {
         _background.graphics.endFill();
         _background.alpha = 0.8;
 
-        _background.filters = [new GlowFilter(0x0, 0.3, 3, 3), new DropShadowFilter(2)];
+        _background.filters = [new GlowFilter(0x0, 0.3, 3, 3)];
     }
 
     /**
@@ -116,6 +117,7 @@ class QuickTextTooltip extends NanoGroup, implements IDestroyable {
     /**
      * События
      */
+
     private function onMouseOver(e:MouseEvent):Void {
         show();
     }
@@ -137,11 +139,11 @@ class QuickTextTooltip extends NanoGroup, implements IDestroyable {
 
     private function onMouseMove(e:MouseEvent = null):Void {
         var deltaX:Float = _context.mouseX + this.width + MOUSE_PADDING_LEFT > _context.stageWidth
-            ? (_context.mouseX - this.width)
-            : (_context.mouseX) + MOUSE_PADDING_LEFT;
+        ? (_context.mouseX - this.width)
+        : (_context.mouseX) + MOUSE_PADDING_LEFT;
         var deltaY:Float = _context.mouseY + this.height + MOUSE_PADDING_TOP > _context.stageHeight
-            ? (_context.mouseY - this.height)
-            : (_context.mouseY) + MOUSE_PADDING_TOP;
+        ? (_context.mouseY - this.height)
+        : (_context.mouseY) + MOUSE_PADDING_TOP;
         this.x = deltaX;
         this.y = deltaY;
     }

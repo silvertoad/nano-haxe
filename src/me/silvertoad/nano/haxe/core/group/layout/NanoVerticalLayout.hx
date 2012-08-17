@@ -1,5 +1,6 @@
 package me.silvertoad.nano.haxe.core.group.layout;
 
+import me.silvertoad.nano.haxe.utils.LayoutUtils;
 import nme.display.DisplayObject;
 import me.silvertoad.nano.haxe.utils.LayoutUtils;
 import me.silvertoad.nano.haxe.core.group.layout.align.NanoVerticalAlign;
@@ -19,7 +20,7 @@ class NanoVerticalLayout extends NanoBaseLayout {
         var elementsHeight:Float = -gap;
         for (j in 0...container.numChildren) {
             element = container.getChildAt(j);
-            elementsHeight += (getHeight(element) + gap);
+            elementsHeight += (LayoutUtils.getHeight(element) + gap);
         }
 
         for (i in 0...container.numChildren) {
