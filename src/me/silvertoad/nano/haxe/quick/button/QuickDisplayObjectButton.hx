@@ -15,8 +15,6 @@ import me.silvertoad.nano.haxe.core.button.NanoBaseButton;
 
 class QuickDisplayObjectButton extends NanoBaseButton {
 
-    private var _displayObject:DisplayObject;
-
     private var _currentState:String;
 
     public function new() {
@@ -25,13 +23,19 @@ class QuickDisplayObjectButton extends NanoBaseButton {
         this.mouseChildren = false;
     }
 
-    public function suDisplayObject(icon:DisplayObject):QuickDisplayObjectButton {
-        _displayObject = icon;
-        this.nWidth = LayoutUtils.getWidth(_displayObject) + getIndent() * 4;
-        this.nHeight = LayoutUtils.getHeight(_displayObject) + getIndent() * 2;
-        this.add(_displayObject);
+    public var displayObject(default, _setDisplayObject):DisplayObject;
+
+    private function _setDisplayObject(displayObject:DisplayObject):DisplayObject {
+        if(nWidth == 0) this.nWidth = LayoutUtils.getWidth(displayObject) + getIndent() * 4;
+        if(nHeight == 0) this.nHeight = LayoutUtils.getHeight(displayObject) + getIndent() * 2;
+        this.add(displayObject);
         this.build();
         this.render(_currentState);
+        return this.displayObject = displayObject;
+    }
+
+    public function suDisplayObject(icon:DisplayObject):QuickDisplayObjectButton {
+        displayObject = icon;
         return this;
     }
 
