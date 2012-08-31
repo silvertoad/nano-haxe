@@ -1,9 +1,10 @@
 package me.silvertoad.nano.haxe.core.group;
+
 import me.silvertoad.nano.haxe.core.group.layout.NanoBaseLayout;
 import me.silvertoad.nano.haxe.core.group.layout.align.NanoVerticalAlign;
 import me.silvertoad.nano.haxe.core.group.layout.align.NanoHorizontalAlign;
-import nme.display.DisplayObject;
 import me.silvertoad.nano.haxe.core.group.layout.INanoLayout;
+import nme.display.DisplayObject;
 import nme.display.Sprite;
 
 /**

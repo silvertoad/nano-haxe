@@ -15,6 +15,11 @@ interface INanoLayout {
     var gap(default, default):Float;
 
     /**
+    * Установить отступы от всех сторон элемента
+    **/
+    var padding(default, _setPadding):Float;
+
+    /**
     * Отступ внутренных элементов слева
     */
     var paddingLeft(default, default):Float;

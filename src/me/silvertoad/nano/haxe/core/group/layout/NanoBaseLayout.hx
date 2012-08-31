@@ -21,12 +21,17 @@ class NanoBaseLayout implements INanoLayout {
 
     public var container(default, default):NanoGroup;
     public var gap(default, default):Float;
+    public var padding(default, _setPadding):Float;
     public var paddingLeft(default, default):Float;
     public var paddingRight(default, default):Float;
     public var paddingTop(default, default):Float;
     public var paddingBottom(default, default):Float;
     public var verticalAlign(default, default):NanoVerticalAlign;
     public var horizontalAlign(default, default):NanoHorizontalAlign;
+
+    private function _setPadding(value:Float):Float {
+        return this.padding = paddingLeft = paddingRight = paddingTop = paddingBottom = value;
+    }
 
     /**
     * Переформатировать
