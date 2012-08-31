@@ -1,5 +1,6 @@
 package me.silvertoad.nano.haxe.core.group.layout;
 
+import me.silvertoad.nano.haxe.utils.LayoutUtils;
 import nme.display.DisplayObject;
 import me.silvertoad.nano.haxe.utils.LayoutUtils;
 import me.silvertoad.nano.haxe.core.group.layout.align.NanoHorizontalAlign;
@@ -18,7 +19,7 @@ class NanoHorizontalLayout extends NanoBaseLayout {
         var elementsWidth:Float = -gap;
         for (j in 0...container.numChildren) {
             element = container.getChildAt(j);
-            elementsWidth += (getWidth(element) + gap);
+            elementsWidth += (LayoutUtils.getWidth(element) + gap);
         }
 
         for (i in 0...container.numChildren) {
