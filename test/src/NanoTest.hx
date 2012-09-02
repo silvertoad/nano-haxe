@@ -1,5 +1,7 @@
 package ;
 
+import nme.display.DisplayObject;
+import me.silvertoad.nano.haxe.core.group.NanoHG;
 import nme.geom.Matrix;
 import nme.display.GradientType;
 import me.silvertoad.nano.haxe.quick.button.QuickTextTooltip;
@@ -28,7 +30,19 @@ class NanoTest extends Sprite {
         var btn:QuickTextButton = new QuickTextButton();
         btn.text = "some text, here";
         this.addChild(btn);
-        new QuickTextTooltip(btn, "im tooltip baby");
+        //        new QuickTextTooltip(btn, "im tooltip baby");
+        var group:NanoGroup = new NanoHG();
+        group.add(getBtn());
+        group.add(getBtn());
+        group.add(getBtn());
+        group.build();
+        this.addChild(group);
+    }
+
+    private function getBtn():DisplayObject {
+        var btn:QuickTextButton = new QuickTextButton();
+        btn.text = "some text, here";
+        return btn;
     }
 
     private function onMouseMove(event:MouseEvent):Void {
