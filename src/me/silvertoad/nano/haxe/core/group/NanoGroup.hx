@@ -1,4 +1,5 @@
 package me.silvertoad.nano.haxe.core.group;
+
 import me.silvertoad.nano.haxe.core.group.layout.NanoBaseLayout;
 import me.silvertoad.nano.haxe.core.group.layout.align.NanoVerticalAlign;
 import me.silvertoad.nano.haxe.core.group.layout.align.NanoHorizontalAlign;
@@ -91,10 +92,10 @@ class NanoGroup extends Sprite, implements INanoGroup {
     }
 
     //                    __
-    //.-----.--.--.-----.|  |_.---.-.--.--.    .-----.--.--.-----.---.-.----.
-    //|__ --|  |  |     ||   _|  _  |_   _|    |__ --|  |  |  _  |  _  |   _|
-    //|_____|___  |__|__||____|___._|__.__|    |_____|_____|___  |___._|__|
-    //      |_____|                                        |_____|
+    // .-----.--.--.-----.|  |_.---.-.--.--.    .-----.--.--.-----.---.-.----.
+    // |__ --|  |  |     ||   _|  _  |_   _|    |__ --|  |  |  _  |  _  |   _|
+    // |_____|___  |__|__||____|___._|__.__|    |_____|_____|___  |___._|__|
+    //       |_____|                                        |_____|
 
     public function suGap(value:Float):INanoGroup {
         layout.gap = value;

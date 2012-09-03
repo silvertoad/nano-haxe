@@ -1,5 +1,7 @@
 package ;
 
+import me.silvertoad.nano.haxe.core.dialog.NanoDialog;
+import me.silvertoad.nano.haxe.core.dialog.NanoDialogManager;
 import nme.geom.Matrix;
 import nme.display.GradientType;
 import me.silvertoad.nano.haxe.quick.button.QuickTextTooltip;
@@ -39,6 +41,9 @@ class NanoTest extends Sprite {
         this.addChild(btn);
 
         new QuickTextTooltip(btn, "im tooltip baby");
+
+        var dm = new NanoDialogManager(Lib.current.stage);
+        dm.showDialog(new NanoDialog());
 
         //        var s:Sprite = new Sprite();
         //        var m:Matrix = new Matrix();
