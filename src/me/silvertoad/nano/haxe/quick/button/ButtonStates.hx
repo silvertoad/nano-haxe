@@ -4,4 +4,5 @@ class ButtonStates {
     public static var OVER:String = "over";
     public static var UP:String = "up";
     public static var DOWN:String = "down";
+    public static var DISABLED:String = "disabled";
 }

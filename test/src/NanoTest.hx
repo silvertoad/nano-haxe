@@ -1,5 +1,7 @@
 package ;
 
+import nme.display.DisplayObject;
+import me.silvertoad.nano.haxe.core.group.NanoHG;
 import me.silvertoad.nano.haxe.core.dialog.NanoDialog;
 import me.silvertoad.nano.haxe.core.dialog.NanoDialogManager;
 import nme.geom.Matrix;
@@ -27,24 +29,17 @@ class NanoTest extends Sprite {
 
     public function new() {
         super();
-
-        //        this.addEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
-        //        var textBtn:QuickTextButton = new QuickTextButton();
-        //        textBtn.text = "Click me!\nPleace...";
-        //        this.addChild(textBtn);
-
-        //        var testIconButton:NanoIconButton = new NanoIconButton(new Bitmap(Assets.getBitmapData("assets/1.png", false)));
-        //        this.addChild(testIconButton);
-
-        var btn:QuickTextButton = new QuickTextButton();
-        btn.text = "some text, here";
-        this.addChild(btn);
+        var group:NanoGroup = new NanoHG();
+        group.add(getBtn());
+        group.add(getBtn());
+        group.add(getBtn());
+        group.build();
+        this.addChild(group);
 
         new QuickTextTooltip(btn, "im tooltip baby");
 
         var dm = new NanoDialogManager(Lib.current.stage);
         dm.showDialog(new NanoDialog());
-
         //        var s:Sprite = new Sprite();
         //        var m:Matrix = new Matrix();
         //        m.createGradientBox(100, 40, (Math.PI / 180) * 90, 0, 0);
@@ -52,6 +47,12 @@ class NanoTest extends Sprite {
         //        s.graphics.drawRect(0, 0, 100, 40);
         //        s.graphics.endFill();
         //        this.addChild(s);
+    }
+
+    private function getBtn():DisplayObject {
+        var btn:QuickTextButton = new QuickTextButton();
+        btn.text = "some text, here";
+        return btn;
     }
 
     private function onMouseMove(event:MouseEvent):Void {
