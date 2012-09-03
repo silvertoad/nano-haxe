@@ -37,15 +37,11 @@ class NanoBaseButton extends NanoButtonBase {
     private function mouseDownHandler(event:MouseEvent):Void {
     }
 
-    override public function setEnabled(enabled:Bool):Void {
+    override private function _setEnabled(enabled:Bool):Bool {
         if (enabled != _enabled) {
             enabled ? enableButton() : disableButton();
-            mouseEnabled = _enabled = enabled;
         }
-    }
-
-    override public function getEnabled():Bool {
-        return _enabled;
+        return super._setEnabled(enabled);
     }
 
     private function enableButton():Void {
@@ -53,6 +49,6 @@ class NanoBaseButton extends NanoButtonBase {
     }
 
     private function disableButton():Void {
-
+        mouseEnabled = false;
     }
 }

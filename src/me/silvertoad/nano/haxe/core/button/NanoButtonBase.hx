@@ -21,12 +21,14 @@ class NanoButtonBase extends NanoGroup, implements IDestroyable {
     private function removeListeners():Void {
     }
 
-    public function setEnabled(value:Bool):Void {
-        _enabled = value;
+    public var enabled(_getEnabled, _setEnabled):Bool;
+
+    private function _getEnabled():Bool {
+        return _enabled;
     }
 
-    public function getEnabled():Bool {
-        return _enabled;
+    private function _setEnabled(value:Bool):Bool {
+        return _enabled = value;
     }
 
     public function destroy():Void {
