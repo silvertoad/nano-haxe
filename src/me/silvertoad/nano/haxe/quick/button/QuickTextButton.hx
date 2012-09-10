@@ -26,7 +26,6 @@ class QuickTextButton extends QuickDisplayObjectButton {
 
     private function _setText(text:String):String {
         _textField.text = text;
-        trace(_textField.width);
         suDisplayObject(_textField);
         return this.text = text;
     }

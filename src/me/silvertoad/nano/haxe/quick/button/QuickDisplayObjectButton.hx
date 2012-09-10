@@ -26,8 +26,9 @@ class QuickDisplayObjectButton extends NanoBaseButton {
     public var displayObject(default, _setDisplayObject):DisplayObject;
 
     private function _setDisplayObject(displayObject:DisplayObject):DisplayObject {
-        if(nWidth == 0) this.nWidth = LayoutUtils.getWidth(displayObject) + getIndent() * 4;
-        if(nHeight == 0) this.nHeight = LayoutUtils.getHeight(displayObject) + getIndent() * 2;
+        this.layout.paddingLeft = this.layout.paddingRight = getIndent() * 4;
+        this.layout.paddingTop = this.layout.paddingBottom = getIndent() * 2;
+
         this.add(displayObject);
         this.build();
         this.render(_currentState);
