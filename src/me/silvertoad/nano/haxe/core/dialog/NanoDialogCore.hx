@@ -31,21 +31,21 @@ class NanoDialogCore extends Sprite, implements INanoGroup {
     public var nWidth(_getWidth, _setWidth):Float;
 
     private function _getWidth():Float {
-        return container.width;
+        return container.nWidth;
     }
 
     private function _setWidth(value:Float):Float {
-        return container.width = value;
+        return container.nWidth = value;
     }
 
     public var nHeight(_getHeight, _setHeight):Float;
 
     private function _getHeight():Float {
-        return container.height;
+        return container.nHeight;
     }
 
     private function _setHeight(value:Float):Float {
-        return container.height = value;
+        return container.nHeight = value;
     }
 
     public var layout(default, _setLayout):INanoLayout;

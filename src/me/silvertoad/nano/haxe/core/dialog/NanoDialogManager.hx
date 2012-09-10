@@ -139,5 +139,6 @@ class NanoDialogManager {
     public function centerDialog(dialog:INanoDialog):Void {
         dialog.nX = (_stage.stageWidth - dialog.nWidth) / 2;
         dialog.nY = (_stage.stageHeight - dialog.nHeight) / 2;
+        trace("<<<<<<<<<<<<<<<<" + ((_stage.stageWidth - dialog.nWidth) / 2) + " : " + ((_stage.stageHeight - dialog.nHeight) / 2));
     }
 }

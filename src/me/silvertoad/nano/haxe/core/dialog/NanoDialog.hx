@@ -18,7 +18,7 @@ class NanoDialog extends NanoDialogCore, implements INanoDialog {
     private var _capture:DisplayObject;
     private var _useKeyboard:Bool;
 
-    private var _background:DisplayObject;
+    private var _background:Sprite;
     private var _closeBtn:DisplayObject;
 
     public function new() {
@@ -51,11 +51,11 @@ class NanoDialog extends NanoDialogCore, implements INanoDialog {
         if (_background == null) {
             _background = new Sprite();
         }
-        var graphics:Graphics = cast(_background).graphics;
+        var graphics:Graphics = _background.graphics;
         graphics.clear();
         graphics.lineStyle(2, PALE_BROWN);
         graphics.beginFill(WHEAT);
-        graphics.drawRect(0, 0, width, height);
+        graphics.drawRect(0, 0, nWidth, nHeight);
         graphics.endFill();
         addChildAt(_background, 0);
     }
@@ -94,12 +94,14 @@ class NanoDialog extends NanoDialogCore, implements INanoDialog {
     private var _nX:Float;
     public var nX(null, _setX):Float;
     private function _setX(value:Float):Float {
+        this.x = value;
         return _nX = value;
     }
 
     private var _nY:Float;
     public var nY(null, _setY):Float;
     private function _setY(value:Float):Float {
+        this.y = value;
         return _nY = value;
     }
 
