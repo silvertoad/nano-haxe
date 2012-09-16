@@ -29,6 +29,7 @@ class NanoTest extends Sprite {
 
     public function new() {
         super();
+        trace(">>>");
         var group:NanoGroup = new NanoHG();
         group.add(getBtn());
         group.add(getBtn());
@@ -36,7 +37,7 @@ class NanoTest extends Sprite {
         group.build();
         this.addChild(group);
 
-        new QuickTextTooltip(btn, "im tooltip baby");
+        //new QuickTextTooltip(btn, "im tooltip baby");
 
         var dm = new NanoDialogManager(Lib.current.stage);
         dm.showDialog(new NanoDialog());

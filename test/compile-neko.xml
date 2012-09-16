@@ -1,5 +1,5 @@
-<project name="compile neko" basedir="./">
-    <target name="compile_neko_vm">
+<project name="nano-test" basedir="./">
+    <target name="compile-neko">
         <exec executable="nme">
             <arg value="test"/>
             <arg value="build.nmml"/>

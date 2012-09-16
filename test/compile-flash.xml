@@ -1,5 +1,5 @@
-<project name="compile flash" basedir="./">
-    <target name="compile_flash">
+<project name="nano-test" basedir=".">
+    <target name="compile-flash">
         <exec executable="nme">
             <arg value="build"/>
             <arg value="build.nmml"/>
