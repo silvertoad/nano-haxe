@@ -5,8 +5,11 @@ import nme.events.MouseEvent;
 
 class NanoBaseButton extends NanoButtonBase {
 
+    public var click:msignal.Signal.Signal1<MouseEvent>;
+
     public function new() {
         super();
+        click = new msignal.Signal.Signal1<MouseEvent>(MouseEvent);
     }
 
     override private function addListeners():Void {
@@ -15,6 +18,7 @@ class NanoBaseButton extends NanoButtonBase {
         this.addEventListener(Event.MOUSE_LEAVE, mouseOutHandler);
         this.addEventListener(MouseEvent.MOUSE_DOWN, mouseDownHandler);
         this.addEventListener(MouseEvent.MOUSE_UP, mouseUpHandler);
+        this.addEventListener(MouseEvent.CLICK, signalize);
     }
 
     override private function removeListeners():Void {
@@ -23,6 +27,7 @@ class NanoBaseButton extends NanoButtonBase {
         this.removeEventListener(Event.MOUSE_LEAVE, mouseOutHandler);
         this.removeEventListener(MouseEvent.MOUSE_DOWN, mouseDownHandler);
         this.removeEventListener(MouseEvent.MOUSE_UP, mouseUpHandler);
+        this.removeEventListener(MouseEvent.CLICK, signalize);
     }
 
     private function mouseOutHandler(event:Event):Void {
@@ -35,6 +40,10 @@ class NanoBaseButton extends NanoButtonBase {
     }
 
     private function mouseDownHandler(event:MouseEvent):Void {
+    }
+
+    private function signalize(event:MouseEvent):Void {
+        click.dispatch(event);
     }
 
     override private function _setEnabled(enabled:Bool):Bool {
